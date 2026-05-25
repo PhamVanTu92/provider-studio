@@ -1,0 +1,22 @@
+services:
+  provider-studio:
+    build: ./backend
+    ports:
+      - "5700:5700"
+    volumes:
+      - studio-data:/data
+    environment:
+      - Studio__DbPath=/data/studio.db
+      - STUDIO_ENCRYPTION_KEY=${STUDIO_ENCRYPTION_KEY}
+    restart: unless-stopped
+
+  provider-studio-ui:
+    build: ./frontend
+    ports:
+      - "3002:80"
+    depends_on:
+      - provider-studio
+    restart: unless-stopped
+
+volumes:
+  studio-data:

@@ -1,0 +1,2 @@
+obj\Release\net9.0/Provider.cs \
+obj\Release\net9.0/ProviderGrpc.cs: ../proto/provider.proto
